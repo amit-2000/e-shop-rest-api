@@ -64,7 +64,7 @@ module.exports.create = async (req, res) => {
   }
   const filename = req.file.filename;
   // const basePath = `${req.protocol}://${req.get("host")}/public/uploads/`;
-  const basePath = `https://e-shop-rest-apsis.herokuapp.com//public/uploads/`;
+  const basePath = `https://e-shop-rest-apsis.herokuapp.com/public/uploads/`;
   let product = new Product({
     name: req.body.name,
     description: req.body.description,
