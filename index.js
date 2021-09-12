@@ -16,7 +16,7 @@ const { errorHandler } = require("./helper/error_handler");
 // app.use(bodyParser.urlencoded()); // setting up body-parser middleware ??? for urlencoded only...
 app.use(bodyParser.json()); // now it will understand json (which is parse from postman).
 app.use(morgan("tiny")); //{ tiny => to display log request in  specific format.}
-// app.use(authJWT());
+app.use(authJWT());
 app.use(errorHandler);
 // static folder
 app.use("/public/uploads", express.static(__dirname + "/public/uploads"));
