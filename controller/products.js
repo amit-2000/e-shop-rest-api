@@ -63,7 +63,8 @@ module.exports.create = async (req, res) => {
     return res.status(400).json({ message: "no file found in request" });
   }
   const filename = req.file.filename;
-  const basePath = `${req.protocol}://${req.get("host")}/public/uploads/`;
+  // const basePath = `${req.protocol}://${req.get("host")}/public/uploads/`;
+  const basePath = `https://e-shop-rest-apsis.herokuapp.com//public/uploads/`;
   let product = new Product({
     name: req.body.name,
     description: req.body.description,

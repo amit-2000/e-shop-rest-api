@@ -31,3 +31,5 @@ async function isRevoked(req , playload , done){
 // unless <=> stackOverflow or express-unless
 //Handling parameterised routes in express-jwt using unless ::=>stackOverflow
 // Handling parameterised routes in express-jwt using unless <===> solution is use regex expression
+
+// gallery-img/613c78ffd621ab220885cdc6
