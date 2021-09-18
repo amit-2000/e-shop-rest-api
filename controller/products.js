@@ -57,7 +57,7 @@ module.exports.getOne = async (req, res) => {
   }
 };
 
-module.exports.create = (req, res) => {
+module.exports.create =async (req, res) => {
   const file = req.file;
   if (!file) {
     return res.status(400).json({ message: "no file found in request" });
@@ -79,7 +79,7 @@ module.exports.create = (req, res) => {
   });
 
   try {
-    // await product.save();
+    await product.save();
 
     mailer.newProduct(product);
     // console.log("productCreated ==>>", product);
