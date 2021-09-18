@@ -12,6 +12,7 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const { authJWT } = require("./helper/jwt");
 const { errorHandler } = require("./helper/error_handler");
+//
 //  ################### middlewares ##############################
 // app.use(bodyParser.urlencoded()); // setting up body-parser middleware ??? for urlencoded only...
 app.use(bodyParser.json()); // now it will understand json (which is parse from postman).
@@ -28,7 +29,8 @@ const productsRouter = require("./routes/products");
 const categoryRouter = require("./routes/categories");
 const orderRouter = require("./routes/orders");
 const userRouter = require("./routes/users");
-app.get('/cool', (req, res) => res.send(cool()))
+const emailRouter = require("./routes/emails");
+
 app.get("/", (req, res) => {
   res.send("this is home page");
 });
@@ -37,6 +39,7 @@ app.use(`${api}/products`, productsRouter);
 app.use(`${api}/category`, categoryRouter);
 app.use(`${api}/user`, userRouter);
 app.use(`${api}/order`, orderRouter);
+app.use(`${api}/emails`, emailRouter);
 //
 
 // console.log(api);

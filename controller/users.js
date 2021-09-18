@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken");
 module.exports.all = async (req, res) => {
   try {
     // const users = await User.find().select("-passwordHash");
-    const users = await User.find();
+    const users = await User.find()
     // const users = {};
     res.status(200).json(users);
 
@@ -127,7 +127,7 @@ module.exports.getCountOfUsers = async (req, res) => {
 
 // {
 // "name" :"alexander ",
-// "email":"alexander@60.com",
+// "email":"amitperane@gmail".com",
 // "phone":976765,
 // "passwordHash":"aaaaaaaaaa",
 // "isAdmin":"false",

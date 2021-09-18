@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 // get all  products.
 const Category = require("../models/category");
 const multer = require("multer");
-
+const mailer = require("../config/nodemailer");
 // validate uploaded files
 const FILE_TYPE_MAP = {
   // mime type
@@ -57,17 +57,13 @@ module.exports.getOne = async (req, res) => {
   }
 };
 
-module.exports.create = async (req, res) => {
+module.exports.create = (req, res) => {
   const file = req.file;
   if (!file) {
     return res.status(400).json({ message: "no file found in request" });
   }
   const filename = req.file.filename;
-  // const basePath = `${req.protocol}://${req.get("host")}/public/uploads/`;
-  const baseUrl = "https://e-shop-rest-apsis.herokuapp.com/";
-  const path = "public/uploads/";
-  const basePath = `${baseUrl}${path}`;
-  console.log("###############", basePath, "#############");
+  const basePath = `${req.protocol}://${req.get("host")}/public/uploads/`;
   let product = new Product({
     name: req.body.name,
     description: req.body.description,
@@ -83,9 +79,12 @@ module.exports.create = async (req, res) => {
   });
 
   try {
-    await product.save();
-    console.log("productCreated ==>>", product);
-    res.status(201).json(product);
+    // await product.save();
+
+    mailer.newProduct(product);
+    // console.log("productCreated ==>>", product);
+    // res.status(201).json(product);
+    return res.status(201).json(product);
   } catch (error) {
     console.log("Error While inserting data", error);
     res.status(500).json({ message: error.message });
